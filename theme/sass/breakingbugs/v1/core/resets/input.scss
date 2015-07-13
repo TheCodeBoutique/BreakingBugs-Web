@@ -1,0 +1,36 @@
+@import "../colors/colors";
+@import "../mixins/font-mixin";
+@import "../font/size";
+@import "../font/weight";
+
+input {
+  border: 0px inset;
+  @include tcb-font($tcb-medium-text, $tcb-normal-weight, $tcb-white);
+  border-bottom: 1px solid rgba($tcb-white, 1);
+  background-color: transparent;
+  cursor: text;
+  outline: none;
+  width: 250px;
+  float: left;
+}
+
+input:focus {
+  border-bottom: 1px solid rgba($tcb-focus, 1.0);
+  box-shadow: none;
+}
+
+::-webkit-input-placeholder {
+  @include tcb-font($tcb-medium-text, $tcb-thin-weight, rgba($tcb-dark-blue, 0.3));
+}
+
+:-moz-placeholder {
+  @include tcb-font($tcb-medium-text, $tcb-thin-weight, rgba($tcb-dark-blue, 0.3));
+}
+
+::-moz-placeholder {
+  @include tcb-font($tcb-medium-text, $tcb-thin-weight, rgba($tcb-dark-blue, 0.3));
+}
+
+:-ms-input-placeholder {
+  @include tcb-font($tcb-medium-text, $tcb-thin-weight, rgba($tcb-dark-blue, 0.3));
+}

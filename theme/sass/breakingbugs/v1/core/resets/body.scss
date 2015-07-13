@@ -1,0 +1,23 @@
+@import "../colors/colors";
+
+body {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: $tcb-dark-blue;
+  margin: 0px;
+}
+
+// ie scroll bars
+body{
+  scrollbar-base-color: transparent;
+  scrollbar-base-color: transparent;
+  scrollbar-3dlight-color: transparent;
+  scrollbar-highlight-color: transparent;
+  scrollbar-track-color: transparent;
+  scrollbar-arrow-color: transparent;
+  scrollbar-shadow-color: transparent;
+  scrollbar-dark-shadow-color: transparent;
+}

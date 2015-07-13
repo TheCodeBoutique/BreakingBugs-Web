@@ -1,0 +1,40 @@
+$tcb-radius: 8px;
+$tcb-radius-pane: 4px;
+
+@mixin tcb-border($color, $alpha) {
+  border: 1px solid rgba($color, $alpha);
+}
+
+@mixin tcb-border-bottom($color, $alpha) {
+  border-bottom: 1px solid rgba($color, $alpha);
+}
+
+@mixin tcb-border-right($color, $alpha) {
+  border-right: 1px solid rgba($color, $alpha);
+}
+
+@mixin tcb-border-left($color, $alpha) {
+  border-left: 1px solid rgba($color, $alpha);
+}
+
+@mixin tcb-border-top($color, $alpha) {
+  border-top: 1px solid rgba($color, $alpha);
+}
+
+@mixin tcb-border-pane {
+  border: 2px solid #ffffff;
+}
+
+@mixin tcb-border-radius {
+  border-radius: $tcb-radius;
+}
+
+@mixin tcb-border-radius-top {
+  border-top-left-radius: $tcb-radius;
+  border-top-right-radius: $tcb-radius;
+}
+
+@mixin tcb-border-radius-bottom {
+  border-bottom-left-radius: $tcb-radius;
+  border-bottom-right-radius: $tcb-radius;
+}

@@ -1,0 +1,44 @@
+.navigation-frame {
+  position: absolute;
+  top: $tcb-toolbar-height;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+
+  .application-title-document-frame {
+    @include tcb-document-frame;
+    height: $tcb-toolbar-height;
+    @include tcb-border($tcb-dark-blue, 1);
+    @include tcb-border-radius-top;
+
+    .application-title-label {
+      @include tcb-font($tcb-xlarge-text, $tcb-thin-weight, $tcb-white);
+      float: right;
+      line-height: $tcb-toolbar-height;
+      margin-right: 10px;
+    }
+
+  }
+
+  .navigation-items-frame {
+    @include tcb-layout-center;
+    width: 980px;
+
+    .list-view {
+
+      .cell {
+        cursor: pointer;
+
+        .title {
+          @include tcb-font($tcb-xxlarge-text, $tcb-thin-weight, $tcb-action);
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,43 @@
+@mixin tcb-toolbar($alpha) {
+  @include tcb-border-bottom($tcb-dark-blue, $alpha);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: $tcb-toolbar-height;
+  background-color: $tcb-white;
+  z-index: 3;
+}
+
+@mixin tcb-toolbar-bottom($alpha) {
+  @include tcb-border-top($tcb-dark-blue, $alpha);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: $tcb-toolbar-height;
+  background-color: $tcb-white;
+  z-index: 3;
+}
+
+@mixin tcb-toolbar-alternate($alpha) {
+  @include tcb-border-bottom($tcb-dark-blue, $alpha);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: $tcb-toolbar-height;
+  background-color: $tcb-silver;
+  z-index: 3;
+}
+
+@mixin tcb-toolbar-alternate-bottom($alpha) {
+  @include tcb-border-top($tcb-dark-blue, $alpha);
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: $tcb-toolbar-height;
+  background-color: $tcb-silver;
+  z-index: 3;
+}

@@ -1,0 +1,15 @@
+$tcb-dark-blue:    #262b32;
+$tcb-white:        #ffffff;
+$tcb-silver:       #efeff4;
+$tcb-focus:        #FA467E;
+$tcb-action:       #c6e290;
+$tcb-shadow:       #737373;
+$tcb-black:        #000000;
+
+@mixin tcb-gradient-action {
+  background-image: linear-gradient(155deg, #1fa2de, rgba(61, 195, 240, 0.5));
+}
+
+@mixin tcb-gradient-snow {
+  background-image: linear-gradient( -180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .80));
+}

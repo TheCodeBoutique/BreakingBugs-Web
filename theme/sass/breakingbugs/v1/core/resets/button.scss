@@ -1,0 +1,32 @@
+@import "../colors/colors";
+@import "../font/size";
+@import "../font/weight";
+
+$normalButtonHeight: 28px;
+$minButtonWidth: 120px;
+
+button {
+  background: transparent;
+  background-color: transparent;
+  border: 0px transparent;
+  border-radius: 2px;
+  border-bottom: 1px solid transparent;
+  color: $tcb-white;
+  cursor: pointer;
+  font-size: $tcb-large-text;
+  font-weight: $tcb-normal-weight;
+  height: $normalButtonHeight;
+  letter-spacing: -0.5px;
+  min-width: $minButtonWidth;
+  outline: none;
+  padding: 0px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin tcb-text-button {
+  color: $tcb-action;
+}
+
+@mixin tcb-text-button-attention {
+  color: $tcb-focus;
+}

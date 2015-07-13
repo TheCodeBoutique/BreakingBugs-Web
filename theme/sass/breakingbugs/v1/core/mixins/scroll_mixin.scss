@@ -1,0 +1,4 @@
+@mixin tcb-scroll-vertical() {
+  overflow-y: scroll;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}

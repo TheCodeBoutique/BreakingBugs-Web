@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breaking Bugs</title>
+    <meta charset="utf-8">
+    <meta name="Author" content="Chad Eubanks of The Code Boutique LLC">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+    <meta name="Description" content="Breaking Bugs | Squash bugs dead">
+
+    <!--Theme related files-->
+    <link rel="stylesheet" href="theme/css/core.css">
+    <!--Framework: Alto polyfills-->
+    <script type="text/javascript" src="frameworks/altojs/polyfills/strings.js"></script>
+    <!--Framework: Alto foundation-->
+    <script type="text/javascript" src="frameworks/altojs/foundation/runtime.js"></script>
+    <!--Framework: UI-->
+    <script type="text/javascript" src="frameworks/altojs/application/date.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/application/form_validation_container.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/utilities/form_validation_mixin.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/core_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/container_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/label_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/image_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/link_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/button_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/textfield_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/textarea_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/search_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/cell.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/list_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/checkbox.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/download_file_button_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/file_upload_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/desktop/select_view/select_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/key_form_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/key_label_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/delegate/calendar_delegate.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/calendar_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/calendar_view_proper.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/shared/mixin/auto_complete_mixin.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/desktop/date_picker.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/desktop/dob_textfield_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/desktop/mixins/event_listeners/click_events.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/desktop/mixins/event_listeners/hover_events.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/desktop/mixins/responder/key_responder.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/desktop/table_view/table_view.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/desktop/panes/panel_pane.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/utilities/state_strings.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/ui/utilities/dom.js"></script>
+    <!--Framework: Application-->
+    <script type="text/javascript" src="frameworks/altojs/application/debug/console.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/application/application.js"></script>
+    <!--Framework: Router-->
+    <script type="text/javascript" src="frameworks/altojs/router/router.js"></script>
+    <!--Framework: Statechart-->
+    <script type="text/javascript" src="frameworks/altojs/statechart/statechart.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/statechart/state.js"></script>
+    <!--Framework: Data Layer-->
+    <script type="text/javascript" src="frameworks/altojs/data_layer/record.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/data_layer/mapper.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/data_layer/request.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/data_layer/datasource.js"></script>
+    <script type="text/javascript" src="frameworks/altojs/data_layer/cookie.js"></script>
+</head>
+<body>
+<!--Localization-->
+<script type="text/javascript" src="localization/en/strings.js"></script>
+<!--Client Application-->
+<script type="text/javascript" src="app/application.js"></script>
+<!--App Controllers-->
+<script type="text/javascript" src="app/controllers/navigation_items_controller.js"></script>
+<script type="text/javascript" src="app/controllers/file_bug_controller.js"></script>
+<!--App Models-->
+<script type="text/javascript" src="app/models/file_bug_model.js"></script>
+<!--App DataStore-->
+<!--App Fixtures-->
+<!--App Components-->
+<!--App Views-->
+<script type="text/javascript" src="app/views/bring_your_bugs_view.js"></script>
+<script type="text/javascript" src="app/views/dashboard_view.js"></script>
+<script type="text/javascript" src="app/views/feature_request_view.js"></script>
+<script type="text/javascript" src="app/views/file_bug_view.js"></script>
+<script type="text/javascript" src="app/views/milestone_view.js"></script>
+<script type="text/javascript" src="app/views/navigation_view.js"></script>
+<script type="text/javascript" src="app/views/search_view.js"></script>
+<!--App View Delegates-->
+<!--App States-->
+<script type="text/javascript" src="app/states/navigation_state.js"></script>
+<script type="text/javascript" src="app/states/bring_your_bugs_state.js"></script>
+<script type="text/javascript" src="app/states/dashboard_state.js"></script>
+<script type="text/javascript" src="app/states/feature_request_state.js"></script>
+<script type="text/javascript" src="app/states/file_bug_state.js"></script>
+<script type="text/javascript" src="app/states/milestone_state.js"></script>
+<script type="text/javascript" src="app/states/search_state.js"></script>
+<!--App Network-->
+<!--App Router-->
+<script type="text/javascript" src="app/routes/router.js"></script>
+<!--Framework: Application-->
+<script type="text/javascript" src="frameworks/altojs/application/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+@mixin tcb-font ($size, $weight, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin tcb-loc-font ($width) {
+  width: $width;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

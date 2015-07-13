@@ -1,0 +1,35 @@
+@import "../colors/colors";
+@import "../mixins/border_mixin";
+@import "../mixins/font-mixin";
+@import "../font/size";
+@import "../font/weight";;
+
+select {
+  @include tcb-border-bottom($tcb-white, 1);
+  @include tcb-font($tcb-medium-text, $tcb-normal-weight, $tcb-white);
+  font-family: "Open Sans";
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  width: 168px;
+  border-radius: 0px;
+  overflow: hidden;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url('../images/down_icon.png') no-repeat right;
+  background-position-x: 144px;
+  background-size: 16px;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select:focus {
+  @include tcb-border-bottom($tcb-focus, 1);
+  box-shadow: none;
+  outline-style: none;
+  outline-width: 0px;
+  outline-color: transparent;
+}
