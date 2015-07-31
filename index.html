@@ -9,6 +9,8 @@
 
     <!--Theme related files-->
     <link rel="stylesheet" href="theme/css/core.css">
+    <!--Cloudkit JS-->
+    <script src="https://cdn.apple-cloudkit.com/ck/1/cloudkit.js"></script>
     <!--Framework: Alto polyfills-->
     <script type="text/javascript" src="frameworks/altojs/polyfills/strings.js"></script>
     <!--Framework: Alto foundation-->
@@ -64,6 +66,26 @@
     <script type="text/javascript" src="frameworks/altojs/data_layer/cookie.js"></script>
 </head>
 <body>
+<div id="apple-sign-in-button"></div>
+<div id="apple-sign-out-button"></div>
+<div id="displayed-username" color="white"></div>
+<script> CloudKit.configure({
+        containers: [{
+
+            // Change this to a container identifier you own.
+            containerIdentifier: 'iCloud.co.LifeWallet.Tracker',
+
+            // And generate an API token through CloudKit Dashboard.
+            apiToken: '9e1255de9f8fa2e86a4a4f3e010e9e124a2d3669d15b4ae0ec8b3809fdd2675e',
+
+            auth: {
+                buttonSize: 'medium',
+                persist: true // Sets a cookie.
+            },
+            environment: 'development'
+        }]
+    });
+</script>
 <!--Localization-->
 <script type="text/javascript" src="localization/en/strings.js"></script>
 <!--Client Application-->
@@ -71,9 +93,22 @@
 <!--App Controllers-->
 <script type="text/javascript" src="app/controllers/navigation_items_controller.js"></script>
 <script type="text/javascript" src="app/controllers/file_bug_controller.js"></script>
+<script type="text/javascript" src="app/controllers/file_feature_controller.js"></script>
+<script type="text/javascript" src="app/controllers/fetch_bugs_controller.js"></script>
+<script type="text/javascript" src="app/controllers/dashboard_controller.js"></script>
+<script type="text/javascript" src="app/controllers/bug_detail_controller.js"></script>
+<script type="text/javascript" src="app/controllers/fetch_features_controller.js"></script>
+<script type="text/javascript" src="app/controllers/discover_user_controller.js"></script>
+<script type="text/javascript" src="app/controllers/user_controller.js"></script>
 <!--App Models-->
 <script type="text/javascript" src="app/models/file_bug_model.js"></script>
+<script type="text/javascript" src="app/models/feature_request_model.js"></script>
+<script type="text/javascript" src="app/models/discover_user_model.js"></script>
+<script type="text/javascript" src="app/models/user_model.js"></script>
 <!--App DataStore-->
+<script type="text/javascript" src="app/datastore/file_bug_datastore.js"></script>
+<script type="text/javascript" src="app/datastore/file_feature_datastore.js"></script>
+<script type="text/javascript" src="app/datastore/users_datastore.js"></script>
 <!--App Fixtures-->
 <!--App Components-->
 <!--App Views-->
@@ -84,8 +119,12 @@
 <script type="text/javascript" src="app/views/milestone_view.js"></script>
 <script type="text/javascript" src="app/views/navigation_view.js"></script>
 <script type="text/javascript" src="app/views/search_view.js"></script>
+<script type="text/javascript" src="app/views/bug_detail_view.js"></script>
+<script type="text/javascript" src="app/views/panes/discover_pane.js"></script>
 <!--App View Delegates-->
+<script type="text/javascript" src="app/views/delegates/discover_pane_delegate.js"></script>
 <!--App States-->
+<script type="text/javascript" src="app/states/authentication_state.js"></script>
 <script type="text/javascript" src="app/states/navigation_state.js"></script>
 <script type="text/javascript" src="app/states/bring_your_bugs_state.js"></script>
 <script type="text/javascript" src="app/states/dashboard_state.js"></script>
@@ -93,6 +132,7 @@
 <script type="text/javascript" src="app/states/file_bug_state.js"></script>
 <script type="text/javascript" src="app/states/milestone_state.js"></script>
 <script type="text/javascript" src="app/states/search_state.js"></script>
+<script type="text/javascript" src="app/states/bug_detail_state.js"></script>
 <!--App Network-->
 <!--App Router-->
 <script type="text/javascript" src="app/routes/router.js"></script>

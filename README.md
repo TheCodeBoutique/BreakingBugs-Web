@@ -24,4 +24,4 @@ Inside of your frameworks directory clone the altojs repo.
 
 **Watching COMPASS files for changes**
 
-    compass watch  theme/sass/core.scss
+    compass watch theme/sass/core.scss --poll

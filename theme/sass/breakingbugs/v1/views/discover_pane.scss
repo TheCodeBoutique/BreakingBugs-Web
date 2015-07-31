@@ -1,0 +1,117 @@
+.discover-pane {
+	@include tcb-pane-base();
+
+	.top-toolbar-view {
+		@include tcb-toolbar-alternate(.3);
+
+		.toolbar-title-view {
+			@include tcb-font($tcb-large-text, $tcb-normal-weight, $tcb-dark-blue);
+      		@include tcb-document-frame();
+      		text-align: center;
+      		line-height: $tcb-toolbar-height;
+		}
+
+	}
+
+	.middle-section {
+		@include tcb-scroll-vertical;
+    	position: absolute;
+    	top: $tcb-toolbar-height;
+    	left: 0px;
+    	right: 0px;
+    	bottom: $tcb-toolbar-height;
+
+    .content-wrapper-view {
+      @include tcb-document-frame;
+      margin-top: $tcb-toolbar-height;
+
+      .basic-information-wrapper {
+        width: 100%;
+        display: inline-block;
+        margin-bottom: 20px;
+
+        .section-title-view {
+          @include tcb-font($tcb-large-text, $tcb-normal-weight, $tcb-dark-blue);
+          @include tcb-border-bottom($tcb-dark-blue, .3);
+          line-height: 25px;
+          margin-top: $tcb-toolbar-height;
+          float: left;
+          min-width: 160px;
+          margin-bottom: 20px;
+        }
+
+        .form-wrapper-view {
+          @include tcb-flex-width(space-around);
+          @include tcb-border($tcb-dark-blue, .3);
+          width: 100%;
+          border-radius: 6px;
+          margin-top: 10px;
+          padding-top: 20px;
+
+          .key-label-view {
+            min-width: 115px;
+          }
+
+          .form-view {
+            width: 250px;
+            color: $tcb-dark-blue;
+          }
+
+          .state-form {
+            width: 378px;
+            padding-bottom: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            display: inline-block;
+
+            .state-label {
+              @include tcb-font($tcb-medium-text, $tcb-thick-weight, $tcb-dark-blue);
+              min-width: 115px;
+              float: left;
+            }
+
+            .select-view {
+              width: 253px;
+              float: right;
+              background-position-x: 225px;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+	.bottom-toolbar-view {
+    @include tcb-toolbar-alternate-bottom(.3);
+
+    .action-buttons-frame {
+      @include tcb-document-frame();
+
+      .float-container {
+        float: right;
+
+        .cancel-button {
+          @include tcb-text-button-attention();
+          height: $tcb-toolbar-height;
+          min-width: 0px;
+        }
+
+        .save-button {
+          @include tcb-text-button();
+          height: $tcb-toolbar-height;
+          min-width: 0px;
+          margin-left: 50px;
+        }
+
+      }
+
+    }
+
+  }
+
+}
