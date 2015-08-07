@@ -1,3 +1,4 @@
+
 Breakingbugs.NavigationState = Alto.State.extend ({
 
     enterState: function() {
@@ -12,6 +13,6 @@ Breakingbugs.NavigationState = Alto.State.extend ({
 
     exitState: function() {
         Alto.DomUtil.removeView('Breakingbugs.navigationView');
-    }
+    },
 
 });

@@ -1,0 +1,51 @@
+input[type="radio"] {
+  background: url('../images/checkbox_unchecked.png') 0px no-repeat;
+  height: 14px;
+  width: 14px;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  cursor: pointer;
+  border: none;
+
+  &:checked {
+    background: url('../images/checkbox_checked.png') 0px no-repeat;
+    height: 14px;
+    width: 14px;
+    margin-top: 5px;
+    margin-right: 10px;
+    float: left;
+    cursor: pointer;
+    border: none;
+  }
+
+}
+
+input[type="checkbox"] {
+  background: url('../images/checkbox_unchecked.png') 0px no-repeat;
+  height: 14px;
+  width: 14px;
+  margin-top: 5px;
+  margin-right: 10px;
+  float: left;
+  cursor: pointer;
+  border: none;
+
+  &:checked {
+    background: url('../images/checkbox_checked.png') 0px no-repeat;
+    height: 14px;
+    width: 14px;
+    margin-top: 5px;
+    margin-right: 10px;
+    float: left;
+    cursor: pointer;
+    border: none;
+  }
+}
+
+.alto-checkbox-label {
+  cursor: pointer;
+  padding-left: 10px;
+  display: inline-block;
+}
+

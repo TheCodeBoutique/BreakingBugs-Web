@@ -2,42 +2,47 @@ Breakingbugs.router = Alto.Router.create({
 
     index: {
         route: 'index.html',
-        state: 'NavigationState'
+        state: 'authenticationState'
     },
 
     navigation: {
         route: '#/navigation',
-        state: 'NavigationState'
+        state: 'navigationState'
     },
 
     dashboard: {
         route: '#/dashboard',
-        state: 'DashboardState'
+        state: 'dashboardState',
+
+        unique_id: {
+            route: '#/dashboard/:id',
+            state: 'bugDetailState'
+        }
     },
 
     fileBug: {
-        route: '#/file-bug',
-        state: 'FileBugState'
+        route: '#/fileBug',
+        state: 'fileBugState'
     },
 
     featureRequest: {
-        route: '#/feature-request',
-        state: 'FeatureRequestState'
+        route: '#/featureRequest',
+        state: 'featureRequestState'
     },
 
     bringYourBugs: {
-        route: '#/bring-your-bugs',
-        state: 'BringYourBugsState'
+        route: '#/bringyourbugs',
+        state: 'bringYourBugsState'
     },
 
     milestone: {
         route: '#/milestone',
-        state: 'MilestoneState'
+        state: 'milestoneState'
     },
 
     search: {
         route: '#/search',
-        state: 'SearchState'
+        state: 'searchState'
     }
 
 });

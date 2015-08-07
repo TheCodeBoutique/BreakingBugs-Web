@@ -17,6 +17,10 @@
 @import "core/resets/li";
 @import "core/resets/select";
 @import "core/resets/ul";
+@import "core/resets/checkbox";
 
 @import "views/dashboard_view";
 @import "views/file_bug_view";
+@import "views/feature_request_view";
+@import "views/bug_detail_view";
+@import "views/discover_pane";

@@ -1,3 +1,5 @@
+//var emailArray = Breakingbugs.dashboardState.displayAllUsers();
+
 Alto.STRINGS = {
 
     APPLICATION_TITLE: 'Breaking Bugs',
@@ -14,4 +16,7 @@ Alto.STRINGS = {
     FILE_BUG_TITLE: 'Title:',
     FILE_BUG_PROJECT: 'Project',
     FILE_BUG_PROJECT_OPTIONS: ['', 'Enroller Web', 'Enroller Server', 'Enrollee Web', 'Enrollee Server']
+
+    // users
+    //USER_EMAILS: emailArray
 }

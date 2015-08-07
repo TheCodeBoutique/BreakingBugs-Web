@@ -1,0 +1,68 @@
+.bug-detail-frame {
+  @include tcb-scroll-vertical();
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+
+  .document-frame {
+      @include tcb-document-frame();
+      top: $tcb-toolbar-height;
+
+    .action-frame {
+      @include tcb-border($tcb-white, .10);
+      @include tcb-border-radius-top;
+      height: $tcb-toolbar-height;
+      width: 100%;
+
+    .action-button {
+      height: $tcb-toolbar-height;
+      min-width: $tcb-toolbar-height;
+
+      img {
+        width: 26px;
+        height: 20px;
+        margin-top: 5px;
+      }
+
+    }
+
+    .application-title-label {
+      @include tcb-font($tcb-xlarge-text, $tcb-thin-weight, $tcb-white);
+      float: right;
+      line-height: $tcb-toolbar-height;
+      margin-right: 10px;
+    }
+
+  }
+
+  }
+
+    .bug-view {
+    margin: 10px;
+    
+
+    div.alto-key-label-view {
+      line-height: 24px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      
+      div {
+        display: inline;
+
+      }
+
+      .key-title {
+        @include tcb-font($tcb-medium-text, $tcb-thick-weight, $tcb-action);
+      }
+
+      .label-title {
+        @include tcb-font($tcb-medium-text, $tcb-thin-weight, $tcb-white);
+      }
+    }
+
+  }
+
+}
