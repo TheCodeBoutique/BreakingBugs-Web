@@ -26,7 +26,7 @@ Breakingbugs.BugDetailView = Alto.View.extend({
 
             bugView: Alto.View.extend({
                 classNames: ['bug-view'],
-                childViews: ['titleLabel', 'projectLabel', 'priorityLabel', 'assignedToLabel', 'statusLabel', 'componentLabel', 'osLabel', 'browserLabel', 'milestoneLabel', 'reproducibleLabel', 'descriptionLabel', 'resultsLabel', 'stepsToReproduceLabel'],
+                childViews: ['titleLabel', 'projectLabel', 'priorityLabel', 'assignedToLabel', 'statusLabel', 'componentLabel', 'osLabel', 'browserLabel', 'classificationLabel', 'milestoneLabel', 'reproducibleLabel', 'descriptionLabel', 'resultsLabel', 'actualResultsLabel', 'stepsToReproduceLabel'],
 
                 	titleLabel: Alto.KeyLabelView.extend({
                 		// classNames: [],
@@ -84,6 +84,13 @@ Breakingbugs.BugDetailView = Alto.View.extend({
                 		labelTitleBinding: 'Breakingbugs.bugDetailController.browser'
                 	}),
 
+					classificationLabel: Alto.KeyLabelView.extend({
+						classNames: [],
+						//tag: 'div',
+						keyTitle: 'Classification: ',
+						labelTitleBinding: 'Breakingbugs.bugDetailController.classification'
+					}),
+
                 	milestoneLabel: Alto.KeyLabelView.extend({
                 		classNames: [],
                 		//tag: 'div',
@@ -111,6 +118,13 @@ Breakingbugs.BugDetailView = Alto.View.extend({
                 		keyTitle: 'Expected Results: ',
                 		labelTitleBinding: 'Breakingbugs.bugDetailController.results'
                 	}),
+
+					actualResultsLabel: Alto.KeyLabelView.extend({
+						classNames: [],
+						//tag: 'div',
+						keyTitle: 'Actual Results: ',
+						labelTitleBinding: 'Breakingbugs.bugDetailController.actualResults'
+					}),
 
                 	stepsToReproduceLabel: Alto.KeyLabelView.extend({
                 		classNames: [],

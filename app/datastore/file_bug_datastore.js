@@ -81,7 +81,10 @@ Breakingbugs.BugDatastore = Alto.Object.extend({
                     os: hash.fields.OS ? hash.fields.OS.value : '',
                     osVersion: hash.fields.OsVersion ? hash.fields.OsVersion.value : '',
                     browser: hash.fields.Browser ? hash.fields.Browser.value : '',
-                    browserVersion: hash.fields.BrowserVersion ? hash.fields.BrowserVersion.value : ''
+                    browserVersion: hash.fields.BrowserVersion ? hash.fields.BrowserVersion.value : '',
+                    actualResults: hash.fields.ActualResults ? hash.fields.ActualResults.value : '',
+                    classification: hash.fields.Classification ? hash.fields.Classification.value : ''
+
                 }
 
                 records.addObject(Breakingbugs.FileBugRecord.create(obj));

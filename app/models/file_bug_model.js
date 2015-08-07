@@ -10,12 +10,14 @@ Breakingbugs.FileBugRecord = Alto.Record.extend ({
     reproducible: '',
     stepsToReproduce: '',
     results: '',
+    actualResults: '',
     priority: '',
     component: '',
     milestone: '',
     os: '',
     osVersion: '',
     browser: '',
-    browserVersion: ''
+    browserVersion: '',
+    classification: ''
 
 });

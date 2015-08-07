@@ -2,13 +2,13 @@ Breakingbugs.UsersDatastore = Alto.Object.extend({
 
     deserializeUsersRecords: function (record) {
         var userRecord = {
-            recordName: record.get('emailAddress'),
+            //recordName: record.get('emailAddress'),
 
-            recordType: 'Users',
+            recordType: 'user',
 
             fields: {
                 emailAddress: {
-                    value: record.get('emailAddress')
+                    value: record.get('email')
                 },
                 firstName: {
                     value: record.get('firstName')
@@ -36,7 +36,6 @@ Breakingbugs.UsersDatastore = Alto.Object.extend({
         response.forEach(function (hash) {
             if (Alto.isPresent(hash.fields)) {
                 obj = {
-                    recordName: hash.recordName ? hash.recordName.value : '',
                     emailAddress: hash.fields.emailAddress ? hash.fields.emailAddress.value : '',
                     firstName: hash.fields.firstName ? hash.fields.firstName.value : '',
                     lastName: hash.fields.lastName ? hash.fields.lastName : '',
@@ -48,7 +47,7 @@ Breakingbugs.UsersDatastore = Alto.Object.extend({
 
         });
 
-        Breakingbugs.userController.set('content', records);
+        Breakingbugs.usersArrayController.set('content', records);
     },
 
 

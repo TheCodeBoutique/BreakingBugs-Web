@@ -1,4 +1,4 @@
-Breakingbugs.userController = Alto.ArrayController.createWithMixins ({
+Breakingbugs.userController = Alto.ObjectController.createWithMixins ({
 
 
 })

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>LifeWallet</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        figure {
+            text-align: center;
+        }
+
+        .marginTop {
+            margin-top:75px;
+        }
+
+        .account {
+            padding-top: 10px;
+            padding-bottom: 40px;
+        }
+
+        .table th, .table td {
+            border-top: none !important;
+        }
+
+        #iconList tr button {
+            margin-top:20px;
+        }
+
+        .rightContainer {
+            padding:40px;
+        }
+
+        .leftContainer {
+            padding:40px;
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 150px;
+        }
+
+    </style>
+
+    <!-- Include the script with the ‘async’ attribute. -->
+    <script src="https://cdn.apple-cloudkit.com/ck/1/cloudkit.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="container">
+
+        <div class="navbar-header">
+
+            <a href="" class="navbar-brand">LifeWallet</a>
+
+            <button type="button" class="navbar-toggle" data-
+                    toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+
+        <div class="nav navbar-nav navbar-right">
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="wrapper">
+
+    <div class="container" id="tableContainer" >
+
+    <div class="leftContainer marginTop">
+
+        <p class="lead" id="signinInstructions">Please sign in to report a bug or request a feature.</p>
+
+    <table class="table table-condensed marginTop" id="iconList" style="width: auto">
+
+        <div>
+            <h2 id="displayed-username"></h2>
+            <div id="apple-sign-in-button"></div>
+            <div id="apple-sign-out-button"></div>
+        </div>
+
+        <tr><th>
+
+        <figure>
+            <img src="icons/enroller.png" height="75" width="75">
+            <figcaption>Enroller</figcaption>
+        </figure>
+
+
+    </th>
+        <td>
+            <button id="enrollerBug" class="btn btn-default modalBtn" data-toggle="modal" data-target="#bugModal">Report a Bug</button>
+            <button id="enrollerStory" class="btn btn-default modalBtn" data-toggle="modal" data-target="#featureModal">Request Feature</button>
+        </td>
+
+    <tr><th>
+
+        <figure>
+            <img src="icons/enrollee.png" height="75" width="75">
+            <figcaption>Enrollee</figcaption>
+        </figure>
+
+    </th>
+        <td>
+            <button id="enrolleeBug" class="btn btn-default modalBtn" data-toggle="modal" data-target="#bugModal">Report a Bug</button>
+            <button id="enrolleeStory" class="btn btn-default modalBtn" data-toggle="modal" data-target="#featureModal">Request Feature</button>
+        </td>
+
+    <tr><th>
+
+        <figure>
+            <img src="icons/folio.png" height="75" width="75">
+            <figcaption>Folio</figcaption>
+        </figure>
+
+    </th>
+        <td>
+            <button id="folioBug" class="btn btn-default modalBtn" data-toggle="modal" data-target="#bugModal">Report a Bug</button>
+            <button id="folioStory" class="btn btn-default modalBtn" data-toggle="modal" data-target="#featureModal">Request Feature</button>
+        </td>
+
+    <tr><th>
+
+        <figure>
+            <img src="icons/healthbook.png" height="75" width="75">
+            <figcaption>HealthBook</figcaption>
+        </figure>
+
+    </th>
+        <td>
+            <button id="healthbookBug" class="btn btn-default modalBtn" data-toggle="modal" data-target="#bugModal">Report a Bug</button>
+            <button id="healthbookStory" class="btn btn-default modalBtn" data-toggle="modal" data-target="#featureModal">Request Feature</button>
+        </td>
+
+    <tr><th>
+
+        <figure>
+            <img src="icons/encounter.png" height="75" width="75">
+            <figcaption>Encounter</figcaption>
+        </figure>
+
+    </th>
+        <td>
+            <button id="encounterBug" class="btn btn-default modalBtn" data-toggle="modal" data-target="#bugModal">Report a Bug</button>
+            <button id="encounterStory" class="btn btn-default modalBtn" data-toggle="modal" data-target="#featureModal">Request Feature</button>
+        </td>
+
+</table>
+        </div>
+
+</div>
+    </div>
+
+<div class="modal" id="featureModal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button class="close" data-dismiss="modal">x</button>
+
+                <h4 class="modal-title">Feature Request</h4>
+
+                <div class="modal-body">
+
+                    <form>
+                        <div class="form-group">
+
+                            <label for="who">What is your occupation or role?</label>
+                            <input class="form-control" id = "who" name="who" placeholder="e.g. a broker" required/>
+
+                            <br />
+
+                            <label for="what">What feature would you like to add?</label>
+                            <input class="form-control" id="what" name="what" placeholder="e.g. form fill templates on enroller" required/>
+
+                            <br />
+
+                            <label for="why">Why would you like to add this feature?</label>
+                            <input class="form-control" id="why" name="why" placeholder="e.g. So I don't have to repeatedly type the same info." required/>
+
+                            <br />
+
+                            <label for="storyDescription">Description</label>
+                            <textarea class="form-control" id="storyDescription" name="storyDescription" placeholder="Enter a description here." required></textarea>
+
+
+                            <div id="errorFeature"></div>    
+
+                        </div>
+                    </form>
+
+                    <br />
+
+                    <button class="btn btn-primary" id="submitFeature" name="submit">Submit</button>  
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal" id="bugModal">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button class="close" data-dismiss="modal">x</button>
+
+                <h4 class="modal-title">Bug Report</h4>
+
+
+                <div class="modal-body">
+
+                    <form>
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <label for "classification">Classification</label>
+                                <select id="classDrop" name = "classification" class="form-control">
+                                    <option value="security">Security</option>
+                                    <option value="crash">Crash/Hang/Data Loss</option>
+                                    <option value="ui">UI/Usability</option>
+                                    <option value="performance">Performance</option>
+                                    <option value="serious">Serious (no workaround)</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+
+                            <br />
+
+                            <div class="dropdown">
+                                <label for "reproducibility">Reproducibility</label>
+                                <select id="reproduceDrop" name = "reproducibility" class="form-control">
+                                    <option value="always">Always</option>
+                                    <option value="sometimes">Sometimes</option>
+                                    <option value="rarely">Rarely</option>
+                                    <option value="unable">Unable</option>
+                                    <option value="no_try">Did Not Try</option>
+                                    <option value="na">Not Applicable</option>
+                                </select>
+                            </div>
+
+                            <br />
+
+                            <label for"title">Title</label>
+                            <input class="form-control" type="text" name="title" id="title" placeholder="Enter a brief title of the issue" required>
+
+                            <br />
+
+                            <label for "config">Configuration</label>
+                            <input class="form-control" type="text" id="config" placeholder="(Internet Explorer, Safari, etc.)" required>
+
+                            <br />
+
+                            <label for "description">Description</label>
+                            <textarea class="form-control" id="bugDescription" placeholder="Please provide a description of the issue you are having." required></textarea>
+
+                            <br />
+
+                            <label for "reproduce">Steps to Reproduce Bug</label>
+                            <textarea class="form-control" id="reproduce" placeholder="Please list the steps required to reproduce the bug." required></textarea>
+
+                            <br />
+
+                            <label for "expected_results">Expected Results</label>
+                            <textarea class="form-control" id="expected_results" placeholder="Please describe what you expected to happen when you completed the steps mentioned above."></textarea>
+
+                            <br />
+
+                            <label for "actual_results">Actual Results</label>
+                            <textarea class="form-control" id="actual_results" placeholder="Please describe what actually happened after the previously mentioned steps were completed."></textarea>
+
+                            <br />
+
+                            <div id="errorBug"></div>
+                    </div>
+                    </form>
+
+                    <br />
+
+                            <button class="btn btn-primary" id="submitBug" name="submit">Submit</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+    CloudKit.configure({
+        containers: [{
+
+            // Change this to a container identifier you own.
+            containerIdentifier: 'iCloud.co.LifeWallet.Tracker',
+
+            // And generate an API token through CloudKit Dashboard.
+            apiToken: '9e1255de9f8fa2e86a4a4f3e010e9e124a2d3669d15b4ae0ec8b3809fdd2675e',
+
+            auth: {
+                buttonSize: 'medium',
+                persist: true // Sets a cookie.
+            },
+            environment: 'development'
+        }]
+    });
+
+    var errorAlert = "<div class='alert alert-danger alert-dismissable' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>Please fill out required fields</div>";
+
+    $('.modal').on('hidden.bs.modal', function(){                   //To clear form after submission
+        $(this).find('form')[0].reset();
+    });
+
+    var buttonNodeList = document.getElementsByClassName("modalBtn");                   // disables all buttons by default to require sign in
+    var buttonArray = [];
+
+    for(i=0; i<buttonNodeList.length; i++){
+        buttonArray[i] = buttonNodeList[i];
+    }
+
+    for(i=0; i<buttonArray.length; i++) {
+        buttonArray[i].disabled = true;
+    }
+
+    var displayUserName = function(name) {
+        var userNameEl = document.getElementById('username');
+        userNameEl.textContent = name;
+        var displayedUserName = document.getElementById('displayed-username');
+        if(displayedUserName) {
+            displayedUserName.textContent = name;
+        }
+    };
+
+        function demoSetUpAuth() {
+
+            // Get the container.
+            var container = CloudKit.getDefaultContainer();
+
+            function gotoAuthenticatedState(userInfo) {
+                if (userInfo.isDiscoverable) {
+                    console.log(userInfo.firstName + ' ' + userInfo.lastName);
+                    document.getElementById("displayed-username").innerHTML = 'Welcome, ' + userInfo.firstName + ' ' + userInfo.lastName;
+                } else {
+                    console.log('User record name: ' + userInfo.userRecordName);
+                }
+                for(i=0; i<buttonArray.length; i++) {
+                    buttonArray[i].disabled = false;
+                }
+                container
+                        .whenUserSignsOut()
+                        .then(gotoUnauthenticatedState);
+            }
+
+            function gotoUnauthenticatedState() {
+                console.log('Unauthenticated User');
+                for(i=0; i<buttonArray.length; i++) {
+                    buttonArray[i].disabled = true;
+                }
+                container
+                        .whenUserSignsIn()
+                        .then(gotoAuthenticatedState)
+                        .catch(gotoUnauthenticatedState);
+            }
+
+            // Check a user is signed in and render the appropriate button.
+            return container.setUpAuth()
+                    .then(function (userInfo) {
+
+                        // Either a sign-in or a sign-out button was added to the DOM and form buttons are enabled or disabled depending on authentication status.
+                        container.whenUserSignsIn().then(function(userInfo) {
+
+                        });
+
+                        container.whenUserSignsOut().then(function() {
+
+                        })
+
+                        // userInfo is the signed-in user or null.
+                        if (userInfo) {
+                            gotoAuthenticatedState(userInfo);
+                        } else {
+                            gotoUnauthenticatedState();
+                        }
+                    }, function (error) {
+                        console.log(error);
+                    });
+        };
+
+    function demoFetchUserInfo() {
+        var container = CloudKit.getDefaultContainer();
+
+        // Fetch user's info.
+        return container.fetchUserInfo().then(function (userInfo) {
+                    console.log(userInfo);
+                }, function (error) {
+                    consoloe.log(error);
+                });
+    }
+
+    demoSetUpAuth();
+
+
+
+
+    var productName = "";
+
+    document.getElementById("enrollerStory").addEventListener('click', function() {               //enroller submissions
+        productName="Enroller Web";
+    });
+
+    document.getElementById("enrollerBug").addEventListener('click', function() {
+        productName="Enroller Web";
+    });
+
+    document.getElementById("enrolleeStory").addEventListener('click', function() {                   //enrollee submissions
+        productName="Enrollee Web";
+    });
+
+    document.getElementById("enrolleeBug").addEventListener('click', function() {
+        productName="Enrollee Web";
+    });
+
+    document.getElementById("folioStory").addEventListener('click', function() {                   //folio submissions
+        productName="Folio iOS";
+    });
+
+    document.getElementById("folioBug").addEventListener('click', function() {
+        productName="Folio iOS";
+    });
+
+    document.getElementById("healthbookStory").addEventListener('click', function() {                   //healthbook submissions
+        productName="Health Book iOS";
+    });
+
+    document.getElementById("healthbookBug").addEventListener('click', function() {
+        productName="Health Book iOS";
+    });
+
+    document.getElementById("encounterStory").addEventListener('click', function() {                   //encounterX submissions
+        productName="EncounterX iOS";
+    });
+
+    document.getElementById("encounterBug").addEventListener('click', function() {
+        productName="EncounterX iOS";
+    });
+
+    document.getElementById("submitFeature").addEventListener('click', function(){
+
+        var featureRecord = {
+            recordType: 'featureRequest',
+            fields: {
+                Who: {
+                    value: document.getElementById("who").value.toString()
+                },
+                What: {
+                    value: document.getElementById("what").value.toString()
+                },
+                Why: {
+                    value: document.getElementById("why").value.toString()
+                },
+                Description: {
+                    value: document.getElementById("storyDescription").value.toString()
+                },
+                Product: {
+                    value: productName
+                },
+                IsComplete: {
+                    value: 0
+                }
+            }
+        };
+
+        var container = CloudKit.getDefaultContainer();
+        var publicDB = container.publicCloudDatabase;
+
+        if(document.getElementById("who").value != "" && document.getElementById("what").value !="" && document.getElementById("why").value != "") {
+        publicDB.saveRecord(featureRecord).then(function(response) {
+            featureRecord = response.records[0];
+        });
+
+        alert("The form has been successfully submitted");
+        $('#featureModal').modal('hide');
+
+        } else {
+          $('#errorFeature').html(errorAlert);
+        }
+
+
+
+    });
+
+    document.getElementById("submitBug").addEventListener('click', function(){
+
+        var classMenu = document.getElementById("classDrop");
+        var reproduceMenu = document.getElementById("reproduceDrop");
+
+        var bugRecord = {
+            recordType: 'userBugReport',
+            fields: {
+                Project:{
+                    value: productName
+                },
+                Classification: {
+                     value: classMenu.options[classMenu.selectedIndex].value
+                 },
+                Reproducible: {
+                    value: reproduceMenu.options[reproduceMenu.selectedIndex].value
+                },
+                Title: {
+                    value: document.getElementById("title").value.toString()
+                },
+                Component: {
+                    value: document.getElementById("config").value.toString()
+                },
+                Description: {
+                    value: document.getElementById("bugDescription").value.toString()
+                },
+                StepsToReproduce: {
+                    value: document.getElementById("reproduce").value.toString()
+                },
+                ExpectedResults: {
+                    value: document.getElementById("expected_results").value.toString()
+                },
+                ActualResults: {
+                     value: document.getElementById("actual_results").value.toString()
+                 },
+                IsComplete: {
+                    value: 0
+                }
+            }
+        };
+
+        var container = CloudKit.getDefaultContainer();
+        var publicDB = container.publicCloudDatabase;
+
+      if(document.getElementById("title").value != "" && document.getElementById("bugDescription").value !="" && document.getElementById("config").value != "" && document.getElementById("reproduce").value != "") {
+          publicDB.saveRecord(bugRecord).then(function(response) {
+            bugRecord = response.records[0];
+        });
+
+        alert("The form has been successfully submitted");
+        $('#bugModal').modal('hide');
+
+    } else {
+        $('#errorBug').html(errorAlert);
+    }
+
+
+    });
+
+
+
+</script>
+
+</body>
+</html>

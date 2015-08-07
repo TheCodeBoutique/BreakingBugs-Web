@@ -1,67 +1,66 @@
 Breakingbugs.DiscoverSubState = Alto.State.extend(Breakingbugs.discoverPaneDelegate, {
 
-        enterState: function () {
-            //if() {
-            //    Breakingbugs.router.goToRoute('index.html');
-            //    Breakingbugs.statechart.dispatchEvent('removeDiscoverPane');
-            //    Breakingbugs.statechart.leaveCurrentSubState();
-            //} else {
-                Breakingbugs.statechart.dispatchEvent('displayDiscoverPane');
-                Breakingbugs.discoverUserController.set('content', Breakingbugs.DiscoverUserRecord.create());
-            //}
-        },
+    enterState: function () {
+        //if() {
+        //    Breakingbugs.router.goToRoute('index.html');
+        //    Breakingbugs.statechart.dispatchEvent('removeDiscoverPane');
+        //    Breakingbugs.statechart.leaveCurrentSubState();
+        //} else {
+            Breakingbugs.statechart.dispatchEvent('displayDiscoverPane');
+            Breakingbugs.discoverUserController.set('content', Breakingbugs.DiscoverUserRecord.create());
+        //}
+    },
 
-        discoverUser: function () {
+    createCookie: function(email, first, last) {
+        Breakingbugs.emailCookie = Alto.Cookie.create({
 
-            var emailAddress = Breakingbugs.discoverUserController.get('email');
-            var fName = Breakingbugs.discoverUserController.get('firstName');
-            var lName = Breakingbugs.discoverUserController.get('lastName');
+            name: 'discoverEmail',
+            domain: 'localhost',
+            value: email,
+            path: '/',
+            expires: 365,
+            // secure: ??
 
-            createCookie();
+        });
+        Breakingbugs.emailCookie.write();
 
-            function createCookie() {
+        Breakingbugs.firstNameCookie = Alto.Cookie.create({
 
-                Breakingbugs.emailCookie = Alto.Cookie.create({
+            name: 'discoverFirstName',
+            domain: 'localhost',
+            value: first,
+            path: '/',
+            expires: 365,
+            // secure: ??
 
-                    name: 'discoverEmail',
-                    domain: 'localhost',
-                    value: emailAddress,
-                    path: '/',
-                    expires: 365,
-                    // secure: ??
+        });
+        Breakingbugs.firstNameCookie.write();
 
-                });
-                Breakingbugs.emailCookie.write();
+        Breakingbugs.lastNameCookie = Alto.Cookie.create({
 
-                Breakingbugs.firstNameCookie = Alto.Cookie.create({
+            name: 'discoverLastName',
+            domain: 'localhost',
+            value: last,
+            path: '/',
+            expires: 365,
+            // secure: ??
 
-                    name: 'discoverFirstName',
-                    domain: 'localhost',
-                    value: fName,
-                    path: '/',
-                    expires: 365,
-                    // secure: ??
+        });
+        Breakingbugs.lastNameCookie.write();
+    },
 
-                });
-                Breakingbugs.firstNameCookie.write();
+    discoverUser: function () {
 
-                Breakingbugs.lastNameCookie = Alto.Cookie.create({
+        var emailAddress = Breakingbugs.discoverUserController.get('email');
+        var fName = Breakingbugs.discoverUserController.get('firstName');
+        var lName = Breakingbugs.discoverUserController.get('lastName');
 
-                    name: 'discoverLastName',
-                    domain: 'localhost',
-                    value: lName,
-                    path: '/',
-                    expires: 365,
-                    // secure: ??
+        Breakingbugs.discoverSubState.createCookie(Breakingbugs.discoverUserController.get('email'), Breakingbugs.discoverUserController.get('firstName'), Breakingbugs.discoverUserController.get('lastName'));
 
-                });
-                Breakingbugs.lastNameCookie.write();
-
-                Breakingbugs.statechart.dispatchEvent('removeDiscoverPane');
-                Breakingbugs.statechart.leaveCurrentSubState();
-                Breakingbugs.statechart.goToState('authenticationState');
-            };
-        },
+            Breakingbugs.statechart.dispatchEvent('removeDiscoverPane');
+            Breakingbugs.statechart.leaveCurrentSubState();
+            Breakingbugs.statechart.goToState('authenticationState');
+    },
 
     cancel: function() {
         Breakingbugs.discoverUserController.set('content', {});
@@ -78,30 +77,65 @@ Breakingbugs.DiscoverSubState = Alto.State.extend(Breakingbugs.discoverPaneDeleg
 Breakingbugs.AuthenticationState = Alto.State.extend ({
 
 	enterState: function() {
+        Breakingbugs.userController.set('content', Breakingbugs.UserRecord.create());
             // Get the container.
             var container = CloudKit.getDefaultContainer();
 
             function gotoAuthenticatedState(userInfo) {
+                console.log(userInfo);
 
                 var discoverEmailCookie = Alto.Cookie.find('discoverEmail');
                 var discoverFirstNameCookie = Alto.Cookie.find('discoverFirstName');
-                var discoverLastNameCookie = Alto.Cookie.find('discoverLastName');
-                //var checkForUser = fetchLoggedInUser();
+                var discoverLastNameCookie = Alto.Cookie.find('discoverLastName');          //Find a way to check for the user record of currently logged in user to prevent creating duplicates
 
-                if (discoverEmailCookie) {
+                //if(userInfo.emailAddress != undefined) {
+                //    var checkForUser = Breakingbugs.authenticationState.fetchLoggedInUser();
+                //    userInfo.isDiscoverable = true;
+                //
+                //    if (userInfo.emailAddress == undefined) {
+                //        userInfo.emailAddress = checkForUser.fields.emailAddress;
+                //    }
+                //
+                //    if (userInfo.firstName == undefined) {
+                //        userInfo.firstName = checkForUser.fields.firstName;
+                //    }
+                //
+                //    if (userInfo.lastName == undefined) {
+                //        userInfo.lastName = checkForUser.fields.lastName;
+                //    }
+                //
+                //    var userEmail = checkForUser.fields.emailAddress;
+                //    var userFirst = checkForUser.fields.firstName;
+                //    var userLast = checkForUser.fields.lastName;
+                //
+                //    Breakingbugs.statechart.dispatchEvent('createCookie', userEmail, userFirst, userLast);
+                //
+                //    console.log(userInfo);
+                //    document.getElementById("displayed-username").innerHTML = 'Welcome, ' + userInfo.emailAddress;
+                //
+                //    Breakingbugs.router.goToRoute('#/navigation');
+                //}
+                if (discoverEmailCookie && discoverFirstNameCookie && discoverLastNameCookie && userInfo.emailAddress == undefined) {
                     var emailValue = discoverEmailCookie.get('value');
                     var fNameValue = discoverFirstNameCookie.get('value');
                     var lNameValue = discoverLastNameCookie.get('value');
+                    userInfo.isDiscoverable = true;
 
-                    if(userInfo.emailAddress = undefined) {
+                    if(userInfo.emailAddress == undefined) {
                         userInfo.emailAddress = emailValue;
                     }
-                    if(userInfo.firstName = undefined) {
+                    if(userInfo.firstName == undefined) {
                         userInfo.firstName = fNameValue;
                     }
-                    if(userInfo.lastName = undefined) {
+                    if(userInfo.lastName == undefined) {
                         userInfo.lastName = lNameValue;
                     }
+
+                    var userEmail = userInfo.emailAddress;
+                    var userFirst = userInfo.firstName;
+                    var userLast = userInfo.lastName;
+
+                    Breakingbugs.statechart.dispatchEvent('createNewUser', userEmail, userFirst, userLast);
 
                     console.log(userInfo);
                     document.getElementById("displayed-username").innerHTML = 'Welcome, ' + userInfo.emailAddress;
@@ -217,43 +251,66 @@ Breakingbugs.AuthenticationState = Alto.State.extend ({
         Breakingbugs.statechart.goToSubState('discoverSubState');
     },
 
-    createNewUser: function() {
-        var discoverEmail = Alto.Cookie.find('discoverEmail');
-        var discoverFirstName = Alto.Cookie.find('discoverFirstName');
-        var discoverLastName = Alto.Cookie.find('discoverLastName');
+    createNewUser: function(email, first, last) {
+
+        Breakingbugs.userController.set('email', email);
+        Breakingbugs.userController.set('firstName', first);
+        Breakingbugs.userController.set('lastName', last);
+        Breakingbugs.userController.set('role', 'employee');
 
         var container = CloudKit.getDefaultContainer(),
             publicDB = container.publicCloudDatabase,
-            dataStore = Breakingbugs.UsersDatastoreDatastore.create(),
-            json = dataStore.deserializeUsersRecords(Breakingbugs.discoverUserController.get('content'));
+            dataStore = Breakingbugs.UsersDatastore.create(),
+            json = dataStore.deserializeUsersRecords(Breakingbugs.userController.get('content'));
 
-        publicDB.saveRecord(json).then(function(response) {
-
+        return publicDB.saveRecord(json).then(function(response) {
+            console.log(json);
         });
     },
 
-    fetchAllUsers: function() {
-        var container = CloudKit.getDefaultContainer();
-        var publicDB = container.publicCloudDatabase;
-        var dataStore = Breakingbugs.UsersDatastore.create();
-        var json = dataStore.serializeUsersRecords(Breakingbugs.userController.get('content'));
+    createCookie: function(email, first, last) {
+        Breakingbugs.emailCookie = Alto.Cookie.create({
 
-        var query = {
-            recordType: 'user',
-        };
+            name: 'discoverEmail',
+            domain: 'localhost',
+            value: email,
+            path: '/',
+            expires: 365,
+            // secure: ??
 
-        return publicDB.performQuery(query).then(function (response){
-            var datastore = Breakingbugs.UsersDatastore.create();
+        });
+        Breakingbugs.emailCookie.write();
 
-            datastore.serializeUsersRecords(response.records);
-        })
+        Breakingbugs.firstNameCookie = Alto.Cookie.create({
+
+            name: 'discoverFirstName',
+            domain: 'localhost',
+            value: first,
+            path: '/',
+            expires: 365,
+            // secure: ??
+
+        });
+        Breakingbugs.firstNameCookie.write();
+
+        Breakingbugs.lastNameCookie = Alto.Cookie.create({
+
+            name: 'discoverLastName',
+            domain: 'localhost',
+            value: last,
+            path: '/',
+            expires: 365,
+            // secure: ??
+
+        });
+        Breakingbugs.lastNameCookie.write();
     },
 
     fetchLoggedInUser: function() {
         var container = CloudKit.getDefaultContainer();
         var publicDB = container.publicCloudDatabase;
         var dataStore = Breakingbugs.UsersDatastore.create();
-        var json = dataStore.serializeUsersRecords(Breakingbugs.userController.get('content'));
+        var json = dataStore.serializeUsersRecords(Breakingbugs.usersArrayController.get('content'));
         var emailCookie = Alto.Cookie.find('discoverEmail');
         var emailValue = emailCookie ? emailCookie.get('value') : '';
 
@@ -263,7 +320,7 @@ Breakingbugs.AuthenticationState = Alto.State.extend ({
                 comparator: 'EQUALS',
                 fieldName: 'emailAddress',
                 fieldValue: {
-                    value: emailValue,
+                    value: emailValue
                 }
             }
         };

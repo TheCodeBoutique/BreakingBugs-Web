@@ -144,6 +144,23 @@ Breakingbugs.DashboardView = Alto.View.extend ({
                         tag: 'div',
                         titleBinding: 'parentView.data.assignedTo'
                     }),
+
+                    //assignedToLabel: Alto.View.extend({
+                    //    childViews: ['keyLabel', 'selectMenu'],
+                    //    classNames: ['select-frame', 'record-assignedTo'],
+                    //
+                    //    keyLabel: Alto.LabelView.extend({
+                    //        classNames: ['select-label'],
+                    //        tag: 'div',
+                    //        title: 'Assigned To',
+                    //    }),
+                    //
+                    //    selectMenu: Alto.SelectView.extend({
+                    //        classNames: ['select-view'],
+                    //        options: Alto.String.loc('USER_EMAILS'),
+                    //        selectedOptionBinding: 'parentView.data.assignedTo'
+                    //    })
+                    //}),
             })
 
 })    

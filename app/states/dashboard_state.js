@@ -15,6 +15,7 @@ Breakingbugs.DashboardState = Alto.State.extend ({
     enterState: function() {
         Breakingbugs.dashboardView = Breakingbugs.DashboardView.create();
         Breakingbugs.statechart.dispatchEvent('fetchBugReports');
+        Breakingbugs.statechart.dispatchEvent('fetchAllUsers');
 
         // Breakingbugs.statechart.goToSubstate('mySubStateInstance')
     },
@@ -63,6 +64,34 @@ Breakingbugs.DashboardState = Alto.State.extend ({
 
             datastore.serializeBugRecords(response.records);
         })
+    },
+
+    fetchAllUsers: function() {
+        var container = CloudKit.getDefaultContainer();
+        var publicDB = container.publicCloudDatabase;
+        var dataStore = Breakingbugs.UsersDatastore.create();
+        var json = dataStore.serializeUsersRecords(Breakingbugs.usersArrayController.get('content'));
+
+        var query = {
+            recordType: 'user',
+        };
+
+        return publicDB.performQuery(query).then(function (response){
+            var datastore = Breakingbugs.UsersDatastore.create();
+
+            datastore.serializeUsersRecords(response.records);
+        })
+    },
+
+    displayAllUsers: function() {
+        var userArray = Breakingbugs.usersArrayController.get('content');
+        var emailArray = [];
+
+        for(var i = 0; i<userArray.length; i++) {
+            emailArray[i] = userArray[i].emailAddress;
+        }
+
+        return emailArray;
     },
 
     // fetchFeatureRequests: function() {
